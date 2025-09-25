@@ -17,7 +17,7 @@ export default function Contact() {
       label: 'Email',
       href: 'mailto:aashish.bathe@gmail.com',
       description: 'aashish.bathe@gmail.com',
-      img: '/icons/mail.jpg',
+      img: import.meta.env.BASE_URL + 'icons/mail.jpg',
       external: false
     },
     {
@@ -25,7 +25,7 @@ export default function Contact() {
       label: 'LeetCode',
       href: 'https://leetcode.com/LordShadow',
       description: 'leetcode.com/LordShadow',
-      img: '/icons/lc.png',
+      img: import.meta.env.BASE_URL + 'icons/lc.png',
       external: true
     },
     {
@@ -33,7 +33,7 @@ export default function Contact() {
       label: 'GitHub',
       href: 'https://github.com/AashishBathe',
       description: 'github.com/AashishBathe',
-      img: '/icons/github.png',
+      img: import.meta.env.BASE_URL + 'icons/github.png',
       external: true
     },
     {
@@ -41,7 +41,7 @@ export default function Contact() {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/aashish-bathe-476a27237',
       description: 'linkedin.com/in/aashish-bathe-476a27237',
-      img: '/icons/linkedin.png',
+      img: import.meta.env.BASE_URL + 'icons/linkedin.png',
       external: true
     }
   ]

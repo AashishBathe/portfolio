@@ -86,7 +86,7 @@ export default function Hero() {
               {/* Replace AB with your profile image placed at public/profile.jpg */}
               <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-slate-800/40 flex items-center justify-center shrink-0">
                 <img
-                  src="/profile.jpg"
+                  src={import.meta.env.BASE_URL + 'profile.jpg'}
                   alt="Aashish Bathe"
                   className="w-full h-full object-cover"
                 />
