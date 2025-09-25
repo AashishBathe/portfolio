@@ -1,11 +1,14 @@
 name: Deploy to GitHub Pages
 
+# run when you push to your main branch (change if your default branch is master)
 on:
   push:
     branches:
       - main
 
+# Minimal permissions required (deploy-pages@v4 requires actions: read in some versions)
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -13,6 +16,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages-artifact-id: ${{ steps.upload-pages-artifact.outputs.artifact-id || '' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,7 +25,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20' # or '18' if you prefer
 
       - name: Install dependencies
         run: npm ci
@@ -28,8 +33,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Show dist contents (for debugging)
+        run: |
+          echo "=== workspace ==="
+          ls -la
+          echo "=== dist ==="
+          ls -la ./dist || true
+
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        id: upload-pages-artifact
+        # Use v3 of the pages uploader which is compatible with deploy-pages@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
@@ -38,4 +52,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        # Use the v4 deploy action (compatible with the upload above)
+        uses: actions/deploy-pages@v4
