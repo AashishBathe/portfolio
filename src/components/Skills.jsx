@@ -10,6 +10,7 @@ const skills = [
   { name: 'AWS', level: 80 },
   { name: 'SQL', level: 85 },
   { name: 'NoSQL', level: 85 },
+  { name: 'Kafka', level: 80 }
 ]
 
 export default function Skills() {

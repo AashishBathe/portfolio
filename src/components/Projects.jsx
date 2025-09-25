@@ -1,22 +1,26 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { ExternalLink } from 'lucide-react'
 
 const projects = [
   {
     title: 'WindGrid-AI',
     desc: 'AI-driven optimal location for wind turbine installation',
     tags: ['React','Open Source APIs','Clustering','Flask'],
-    highlight: '1st Runner Up among 39,000+ participants in LTTS TECHgium (8th edition)'
+    highlight: '1st Runner Up among 39,000+ participants in LTTS TECHgium (8th edition)',
+    href: 'https://www.linkedin.com/posts/l%26t-technology-services-limited_techgium-purposefulagileinnovation-engineeringthechange-activity-7329487407278456832-2urU/' // placeholder, replace later
   },
   {
     title: 'FreeTube',
     desc: 'Spring Boot microservices platform for video ingestion and streaming',
-    tags: ['Java','Spring Boot','Docker','Spring Cloud', 'SQL']
+    tags: ['Java','Spring Boot','Docker','Spring Cloud', 'SQL'],
+    href: 'https://github.com/AashishBathe/FreeTube-Docker'
   },
   {
     title: 'E-commerce Application',
     desc: 'Spring Boot microservices platform for E-commerce driven by Kafka',
-    tags: ['Java','Spring Boot','Docker','Kafka', 'SQL']
+    tags: ['Java','Spring Boot','Docker','Kafka', 'SQL'],
+    href: 'https://github.com/AashishBathe/Ecommerce-Docker'
   }
 ]
 
@@ -32,9 +36,12 @@ export default function Projects() {
         viewport={{ once: true }}
       >
         {projects.map((p, i) => (
-          <motion.article
+          <motion.a
             key={p.title}
-            className="card-glass p-6 md:p-8 rounded-2xl cursor-pointer hover-lift"
+            href={p.href}   // uses project-specific href
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card-glass p-6 md:p-8 rounded-2xl cursor-pointer hover-lift block relative"
             initial={{ y: 12, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             whileHover={{ y: -12, scale: 1.02, boxShadow: '0 20px 40px rgba(2,6,23,0.6)' }}
@@ -46,6 +53,7 @@ export default function Projects() {
                 <h3 className="text-xl md:text-2xl font-semibold">{p.title}</h3>
                 <p className="mt-3 text-slate-300 text-base">{p.desc}</p>
               </div>
+              <ExternalLink className="w-4 h-4 text-slate-400 flex-shrink-0" />
             </div>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -60,8 +68,10 @@ export default function Projects() {
               ))}
             </div>
 
-            {p.highlight && <div className="mt-5 text-xs text-amber-300">{p.highlight}</div>}
-          </motion.article>
+            {p.highlight && (
+              <div className="mt-5 text-xs text-amber-300">{p.highlight}</div>
+            )}
+          </motion.a>
         ))}
       </motion.div>
     </section>

@@ -46,7 +46,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ y: -6 }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 rounded-lg card-glass border border-slate-700 text-sm hover-lift"
+              className="px-6 py-3 rounded-lg card-glass border border-slate-700 text-sm hover-lift text-center"
               href="#projects"
             >
               See Projects
@@ -56,7 +56,7 @@ export default function Hero() {
             <motion.a
               whileHover={{ y: -6 }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 rounded-lg bg-gradient-to-r from-brand-start to-brand-end text-sm font-medium hover-lift"
+              className="px-6 py-3 rounded-lg bg-gradient-to-r from-brand-start to-brand-end text-sm font-medium hover-lift text-center"
               href={DRIVE_RESUME_LINK}
               target="_blank"
               rel="noopener noreferrer"
@@ -105,16 +105,16 @@ export default function Hero() {
             </div>
 
             <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-              <div className="p-3 bg-slate-800/60 rounded hover:bg-slate-800 transition">
+              <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
                 Project Intern @IISER
               </div>
-              <div className="p-3 bg-slate-800/60 rounded hover:bg-slate-800 transition">
+              <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
                 SDE Intern @Trumsy
               </div>
-              <div className="p-3 bg-slate-800/60 rounded hover:bg-slate-800 transition">
+              <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
                 Knight @Leetcode (Max Rating - 1930)
               </div>
-              <div className="p-3 bg-slate-800/60 rounded hover:bg-slate-800 transition">
+              <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
                 Solved 920+ problems on Leetcode
               </div>
             </div>
