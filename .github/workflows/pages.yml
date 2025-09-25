@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: "Deploy to GitHub Pages"
 
 on:
   push:
     branches:
-      - main   # change to 'master' if your default branch is master
+      - main 
 
 permissions:
   actions: read
@@ -15,33 +15,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: "Checkout repository"
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: "Use Node.js"
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: npm ci
 
-      - name: Build
+      - name: "Build"
         run: npm run build
 
-      - name: Debug: show repo root (quick)
+      - name: "Debug - show repo root (quick)"
         run: |
           echo "=== repo root files ==="
           ls -la
 
-      - name: Debug: show dist contents and index head
+      - name: "Debug - show dist contents and index head"
         run: |
           echo "=== dist listing ==="
           ls -la ./dist || true
           echo "=== dist top of index.html ==="
           sed -n '1,120p' ./dist/index.html || true
 
-      - name: Upload Pages artifact
+      - name: "Upload Pages artifact"
         id: upload-pages-artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -51,5 +51,5 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: "Deploy to GitHub Pages"
         uses: actions/deploy-pages@v4
