@@ -17,7 +17,7 @@ export default function App() {
         <Skills />
         <Contact />
       </main>
-      <footer className="text-center py-8 text-sm text-slate-400">
+      <footer className="text-center py-4 text-sm text-slate-300 bg-slate-900/80 border-t border-slate-700">
         Built with 💙 by Aashish Bathe (and GPT :p)
       </footer>
     </div>

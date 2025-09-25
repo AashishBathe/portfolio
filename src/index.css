@@ -97,3 +97,210 @@ body {
     height: 40px;
   }
 }
+
+/* ---------- Contact: responsive grid + card ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.contact-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid var(--glass-border);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 2px 10px rgba(10,10,10,0.04);
+}
+.contact-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(2,6,23,0.12); }
+
+.contact-card .contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  overflow: hidden;
+}
+.contact-card .contact-text h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+.contact-card .contact-text p {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 0. nine rem; /* fallback small text */
+}
+
+/* ensure icon box and image remain same size in the card */
+.contact-card .contact-icon-box {
+  flex: 0 0 auto;
+}
+
+/* smaller adjustments on very small screens */
+@media (max-width: 420px) {
+  .contact-card { padding: 0.6rem; gap: 0.6rem; }
+  .contact-card .contact-text h3 { font-size: 0.95rem; }
+  .contact-card .contact-text p { font-size: 0.82rem; opacity: 0.85; }
+}
+
+/* ---------- Navbar mobile menu helpers ---------- */
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: rgba(15,23,42,0.35);
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  color: var(--tw-text-opacity, #e6eef8);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: calc(var(--header-offset) + 6px);
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding: 0.6rem;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.25);
+    min-width: 160px;
+    z-index: 60;
+  }
+  .nav-links.open { display: flex; }
+}
+
+html, body {
+  overflow-x: hidden;   /* prevents page-wide zoom-to-fit caused by overflow */
+  box-sizing: border-box;
+}
+
+/* ensure all images and media never exceed their container */
+img, video, picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* NAV: ensure mobile menu can't push page to the right */
+.menu-btn {
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: #e6eef8;              /* clear, high-contrast text */
+  background: rgba(3, 7, 18, 0.98); /* near-solid dark background for legibility */
+  -webkit-backdrop-filter: none; /* ensure no translucency */
+  backdrop-filter: none;
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 0.6rem;
+  box-shadow: 0 14px 40px rgba(2,6,23,0.45);
+  font-weight: 600;
+}
+
+/* mobile: anchor appearance inside dropdown */
+.nav-links a {
+  color: #e6eef8;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.03); color: #fff; }
+
+/* ensure the nav root doesn't overflow */
+nav {
+  overflow: visible; /* keep dropdown visible but not pushing layout */
+}
+
+/* CONTACT: Mobile first 1 column, desktop 2 columns (2x2) */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: single column */
+  gap: 0.9rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Desktop: two columns (2x2 for 4 items), larger gap */
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on desktop */
+    gap: 1rem;
+    max-width: 900px; /* keep the grid from becoming too wide */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra safety: prevent any child from forcing the grid wider than its cell */
+.contact-grid > * {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* small tweak: ensure contact cards wrap text and don't push width */
+.contact-card .contact-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* keep dropdown anchored to the viewport edge and not translucent */
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(var(--header-offset) + 6px);
+    flex-direction: column;
+    min-width: 180px;
+    z-index: 60;
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* ---------- CONTACT: force 2x2 on desktop and stretch cards ---------- */
+/* Desktop: exactly 2 columns and each row's cells stretch equally */
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr); /* exactly 2 columns */
+    grid-auto-rows: 1fr;                  /* make each row height match available space */
+    gap: 1rem;
+    width: 100%;
+    max-width: none;       /* allow grid to use full container width (no centering) */
+    margin: 0;             /* ensure it isn't centered */
+  }
+
+  /* ensure each card fills its grid cell */
+  .contact-grid > * {
+    height: 100%;
+    display: flex;
+  }
+  .contact-card {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;        /* fill the grid cell */
+  }
+
+  /* make inner text stretch and avoid centering that squeezes layout */
+  .contact-card .contact-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}

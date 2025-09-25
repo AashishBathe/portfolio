@@ -2,12 +2,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 /**
- * Contact.jsx (updated)
+ * Contact.jsx (responsive + mobile-friendly)
  *
- * - Icon boxes have a consistent white background and fixed size.
- * - Use images placed in public/icons/: mail.png, leetcode.png, github.png, linkedin.png
- * - Grid is 2×2 on wider screens.
- * - Links: mailto for email, external links open in new tab.
+ * - Uses .contact-grid and .contact-card for responsive wrapping.
+ * - Keeps your images from public/icons via import.meta.env.BASE_URL.
+ * - Cards are accessible links; external open in new tab.
  */
 
 export default function Contact() {
@@ -50,7 +49,7 @@ export default function Contact() {
     <section id="contact" className="py-10 scroll-mt-14">
       <h2 className="text-3xl font-semibold mb-4">Contact</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="contact-grid">
         {links.map(link => (
           <motion.a
             key={link.id}
@@ -58,27 +57,27 @@ export default function Contact() {
             {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             whileHover={{ y: -6, scale: 1.02 }}
             whileTap={{ scale: 0.99 }}
-            className="card-glass p-4 md:p-6 rounded-xl flex items-center gap-4 hover-lift"
+            className="contact-card"
             aria-label={`${link.label} — ${link.description}`}
             title={link.description}
+            onClick={() => { /* keep link behavior; menu will close via Nav if needed */ }}
           >
-            <div className="contact-icon-box">
-              {/* image constrained to consistent size by CSS (.contact-icon-box img) */}
+            <div className="contact-icon-box" aria-hidden>
               <img
                 src={link.img}
                 alt={`${link.label} icon`}
-                onError={(e) => { e.target.style.display = 'none' }}
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
             </div>
 
-            <div className="flex-1">
-              <div className="text-lg font-semibold">{link.label}</div>
-              <div className="text-slate-400 text-sm break-words">
+            <div className="contact-text">
+              <h3>{link.label}</h3>
+              <p className="text-slate-400 text-sm break-words">
                 <span className="underline">{link.description.replace(/^https?:\/\//, '')}</span>
-              </div>
+              </p>
             </div>
 
-            <div className="text-slate-400 text-xs font-medium self-start">
+            <div className="text-slate-400 text-xs font-medium self-start" style={{ marginLeft: 'auto' }}>
               {link.external ? 'Open' : 'Mail'}
             </div>
           </motion.a>
