@@ -12,7 +12,7 @@ import TypedText from './TypedText'
  *   Using a normal share link will open the Drive preview in a new tab.
  */
 
-const DRIVE_RESUME_LINK = 'https://drive.google.com/file/d/1psKVIj2f8pKU7SRs8VJv_GXnSYUxHb78/view?usp=sharing'
+const DRIVE_RESUME_LINK = 'https://drive.google.com/file/d/1ptz_7BzR1qVyBlmtPaRaD2BHo8bTZLdQ/view?usp=sharing'
 
 export default function Hero() {
   return (
