@@ -12,7 +12,7 @@ import TypedText from './TypedText'
  *   Using a normal share link will open the Drive preview in a new tab.
  */
 
-const DRIVE_RESUME_LINK = 'https://drive.google.com/file/d/1ptz_7BzR1qVyBlmtPaRaD2BHo8bTZLdQ/view?usp=sharing'
+const DRIVE_RESUME_LINK = 'https://drive.google.com/file/d/15ftRKt4aS-qHE2pLHN-Baw80CBpW8bd9/view?usp=sharing'
 
 export default function Hero() {
   return (
@@ -115,7 +115,7 @@ export default function Hero() {
                 Knight @Leetcode (Max Rating - 1930)
               </div>
               <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
-                Solved 920+ problems on Leetcode
+                Solved 950+ problems on Leetcode
               </div>
             </div>
           </motion.div>
