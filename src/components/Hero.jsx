@@ -112,10 +112,10 @@ export default function Hero() {
                 SDE Intern @Trumsy
               </div>
               <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
-                Knight @Leetcode (Max Rating - 1930)
+                Knight @Leetcode (Max Rating - 1935)
               </div>
               <div className="p-3 bg-slate-800/60 rounded-xl hover:bg-slate-800 transition text-center">
-                Solved 950+ problems on Leetcode
+                Solved 1000+ problems on Leetcode
               </div>
             </div>
           </motion.div>
